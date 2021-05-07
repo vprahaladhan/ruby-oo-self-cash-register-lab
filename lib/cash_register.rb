@@ -7,8 +7,8 @@ class CashRegister
     @items = {}
   end
 
-  def update_items(title, price, quantity)
-    @items[title] = {:price => price, :quantity => quantity} 
+  def items=(item)
+    @items[item[:title]] = { :price => item[:price], :quantity => item[:quantity] } 
   end
 
   def items
@@ -22,7 +22,7 @@ class CashRegister
   end
 
   def add_item(title, price, quantity = 1)
-    self.update_items(title, price, quantity)
+    self.items=({ :title => title, :price => price, :quantity => quantity })
     self.total=(price * quantity + self.total)
   end
 
